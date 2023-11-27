@@ -1,0 +1,29 @@
+{
+  "name": "finale-test-one-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/finale-test-one-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/finale-test-one-e2e/cypress.json",
+        "devServerTarget": "finale-test-one:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "finale-test-one:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/finale-test-one-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["finale-test-one"]
+}
